@@ -22,7 +22,10 @@ const db = mysql.createConnection(
             choices: [
                 "View all departments?",
                 "View all roles?",
-                "Add department?"
+                "View all employees?",
+                "Add department?",
+                "Add a role?",
+                "Add an employee?"
             ]
         }
     ]).then((data)=>{
@@ -31,9 +34,18 @@ const db = mysql.createConnection(
         if(data.Userchoice === "View all departments?"){
                 ViewDepartments()
         }
+        if(data.Userchoice === "View all roles?"){
+
+        }
+        if(data.Userchoice === "View all employees?"){
+
+        }
         if(data.Userchoice === "Add department?"){
             addDepartment()
-    }
+        }
+        if(data.Userchoice === "Add a role?") {
+
+        }
 
     })
   }
@@ -44,6 +56,12 @@ const db = mysql.createConnection(
   // query tells what to do to the database
   function ViewDepartments() {
     db.query("SELECT * FROM department", (err, data) =>{
+        console.table(data)
+    })
+  }
+
+  function ViewRoles () {
+    db.query ("SELECT * from role" , (err, data)=>{
         console.table(data)
     })
   }
